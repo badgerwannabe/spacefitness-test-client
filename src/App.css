@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+*{
+    font-family: 'Montserrat', sans-serif;
+}
+
+.logout-button {
+    margin: 20px!important;
+}
+
+.basic-container{
+    padding: 0 200px 0 200px!important;
+}
+
+.header-backend{
+    box-shadow: none!important;
+    border: none!important;
+    border-bottom: 2px solid rgb(192, 191, 191)!important;
+    margin-bottom: 3rem!important;
+}
+
+
+.header-text{
+    padding-top: 25px!important;
+    font-family: 'Montserrat', sans-serif;
+}
