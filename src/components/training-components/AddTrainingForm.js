@@ -1,4 +1,4 @@
-import Reactfrom "react";
+import React from "react";
 import { useMutation, useQuery } from "@apollo/client";
 import { useForm } from "../../utils/hooks";
 import { Button, Form, Dropdown } from "semantic-ui-react";
