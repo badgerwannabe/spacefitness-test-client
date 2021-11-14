@@ -6,7 +6,7 @@ import {
   FETCH_TRAINER_QUERY,
 } from "../../utils/graphql";
 
-import { useQuery, useMutation, gql } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 
 function TrainingCard({
     training: { trainingName, createdAt, id,  trainingDescription,

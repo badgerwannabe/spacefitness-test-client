@@ -4,7 +4,7 @@ import {ApolloClient,InMemoryCache,createHttpLink,ApolloProvider} from '@apollo/
 
 
 const httpLink = createHttpLink({
-    uri: 'http://localhost:4000'
+    uri: 'https://spacefit-server-replit.herokuapp.com/graphql'
 })
 
 const client = new ApolloClient({

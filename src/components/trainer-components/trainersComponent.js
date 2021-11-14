@@ -1,11 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import {
-  Dropdown,
   Transition,
-  Menu,
   Grid,
-  Segment,
-  Text,
   Button,
 } from "semantic-ui-react";
 import TrainerCard from "./trainerCard";

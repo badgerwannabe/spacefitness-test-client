@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Dropdown,Transition, Menu, Grid, Segment,Text } from "semantic-ui-react";
+import React from "react";
+import {Transition, Grid, Segment } from "semantic-ui-react";
 import TemplateCard from "./templateCard";
 import {useQuery} from '@apollo/client';
 import { FETCH_TEMPLATES_QUERY } from '../../utils/graphql';

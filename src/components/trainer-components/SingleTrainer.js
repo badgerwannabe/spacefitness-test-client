@@ -1,8 +1,7 @@
 import React from "react";
 import {
   EDIT_TRAINERS_MUTATION,
-  FETCH_TRAINER_QUERY,
-  FETCH_TRAINERS_QUERY,
+  FETCH_TRAINER_QUERY
 } from "../../utils/graphql";
 import { useQuery, useMutation, gql } from "@apollo/client";
 import { Button, Form } from "semantic-ui-react";

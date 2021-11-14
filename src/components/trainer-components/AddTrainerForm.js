@@ -1,6 +1,6 @@
 
 import React  from "react";
-import {useMutation, useQuery, } from "@apollo/client";
+import {useMutation } from "@apollo/client";
 import {useForm} from '../../utils/hooks'
 import { Button, Form  } from "semantic-ui-react";
 
