@@ -8,6 +8,7 @@ import BackendPage from "./pages/BackendPage";
 import AddTrainerForm from "./components/trainer-components/AddTrainerForm";
 import AddTrainingForm from "./components/training-components/AddTrainingForm";
 import SingleTrainer from "./components/trainer-components/SingleTrainer";
+import SingleTraining from "./components/training-components/SingleTraining";
 
 function App() {
   return (
@@ -53,6 +54,8 @@ function App() {
         <Route exact path="/add-trainer" component={AddTrainerForm} />
         <Route exact path="/add-training" component={AddTrainingForm} />
         <Route exact path="/trainers/:trainerId" component={SingleTrainer} />
+        <Route exact path="/trainings/:trainingId" component={SingleTraining} />
+          
       
       </Container>
     </Router>
