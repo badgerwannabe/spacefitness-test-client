@@ -23,7 +23,7 @@ function MainContainer(props) {
         <Grid.Column stretched width={4}>
           <Menu secondary vertical size="massive">
             <Menu.Item
-              content="Grafik treningów"
+              content="Training schedule"
               name="schedule"
               active={activeItem === "schedule"}
               onClick={handleItemClick}
@@ -31,7 +31,7 @@ function MainContainer(props) {
               to={"/schedule"}
             />
             <Menu.Item
-              content="Szablony"
+              content="Templates"
               name="templates"
               active={activeItem === "templates"}
               onClick={handleItemClick}
@@ -40,7 +40,7 @@ function MainContainer(props) {
             />
 
             <Menu.Item
-              content="Treningi"
+              content="Trainings"
               name="trainings"
               active={activeItem === "trainings"}
               onClick={handleItemClick}
@@ -48,7 +48,7 @@ function MainContainer(props) {
               to={"/trainings"}
             />
             <Menu.Item
-              content="Trenerzy"
+              content="Trainers"
               name="trainers"
               active={activeItem === "trainers"}
               as={Link}
@@ -56,7 +56,7 @@ function MainContainer(props) {
               onClick={handleItemClick}
             />
             <Menu.Item
-              content="Użytkownicy"
+              content="Users"
               name="users"
               active={activeItem === "users"}
               as={Link}
@@ -64,7 +64,7 @@ function MainContainer(props) {
               onClick={handleItemClick}
             />
             <Menu.Item
-              content="Abonamenty"
+              content="Passes"
               name="passes"
               active={activeItem === "passes"}
               onClick={handleItemClick}
