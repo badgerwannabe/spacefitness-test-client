@@ -35,21 +35,21 @@ export const FETCH_TRAININGS_QUERY = gql`
       trainingName
       createdAt
       trainingDescription
-      trainer
-      createdAt
+      trainerId
+      trainingImage
     }
   }
 `;
+
 export const FETCH_TRAINING_QUERY = gql`
-  query ($trainingId:ID!) {
-    getTraining(trainingId:$trainingId) {
+  query ($trainingId: ID!) {
+    getTraining(trainingId: $trainingId) {
       id
       trainingName
-      createdAt
       trainingDescription
-      trainer
+      trainerId
       createdAt
-      image
+      trainingImage
     }
   }
 `;
@@ -57,21 +57,21 @@ export const ADD_TRAININGS_MUTATION = gql`
   mutation createTraining(
     $trainingName: String!
     $trainingDescription: String!
-    $trainer: ID!
-    $image: String!
+    $trainerId: ID!
+    $trainingImage: String!
   ) {
     createTraining(
       trainingName: $trainingName
       trainingDescription: $trainingDescription
-      trainer: $trainer
-      image: $image
+      trainerId: $trainerId
+      trainingImage: $trainingImage
     ) {
       id
       trainingName
       trainingDescription
-      trainer
+      trainerId
       createdAt
-      image
+      trainingImage
     }
   }
 `;
@@ -79,21 +79,23 @@ export const EDIT_TRAININGS_MUTATION = gql`
   mutation editTraining(
     $trainingName: String
     $trainingDescription: String
-    $trainer: ID
-    $image: String
+    $trainerId: ID
+    $trainingImage: String
+    $trainingId: ID!
   ) {
     editTraining(
       trainingName: $trainingName
       trainingDescription: $trainingDescription
-      trainer: $trainer
-      image: $image
+      trainerId: $trainerId
+      trainingImage: $trainingImage
+      trainingId: $trainingId
     ) {
       id
       trainingName
       trainingDescription
-      trainer
+      trainerId
       createdAt
-      image
+      trainingImage
     }
   }
 `;
@@ -158,6 +160,21 @@ export const EDIT_TRAINERS_MUTATION = gql`
       email
       phoneNumber
       createdAt
+    }
+  }
+`;
+
+export const FETCH_DAYS_QUERY = gql`
+  query {
+    getDays {
+      id
+      date
+      createdAt
+      dayTrainings {
+        trainer
+        training
+        time
+      }
     }
   }
 `;
