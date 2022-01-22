@@ -4,6 +4,7 @@ import { Menu, Grid } from "semantic-ui-react";
 import TrainersComponent from "./trainer-components/trainersComponent";
 import TrainingComponent from "./training-components/trainingComponent";
 import TemplateComponent from "./template-components/templateComponent";
+import ScheduleComponent from "./schedule-components/scheduleComponent";
 import { Link } from "react-router-dom";
 
 function MainContainer(props) {
@@ -78,6 +79,7 @@ function MainContainer(props) {
             {activeItem === "trainers" ? <TrainersComponent /> : ""}
             {activeItem === "trainings" ? <TrainingComponent /> : ""}
             {activeItem === "templates" ? <TemplateComponent /> : ""}
+            {activeItem === "schedule" ? <ScheduleComponent /> : ""}
           </Grid>
         </Grid.Column>
       </Grid.Row>
