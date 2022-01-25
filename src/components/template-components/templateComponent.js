@@ -15,20 +15,14 @@ function TemplateComponent(props){
       console.log(days)
     
     const TemplateComponent = (
-
-        <Segment>
         <Transition.Group>
-          
-         
         {days &&  
             days.map((day) => (
               <Grid.Column key={day.id} style={{ marginBottom: 20 }}>
                 <TemplateCard day={day} />
               </Grid.Column>
             ))}
-
-</Transition.Group>
-        </Segment>
+        </Transition.Group>
     )
     return TemplateComponent
 }
