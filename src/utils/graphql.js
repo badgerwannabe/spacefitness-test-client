@@ -108,7 +108,6 @@ export const FETCH_TEMPLATES_QUERY = gql`
       dayTrainings {
         time
         training
-        trainer
       }
       createdAt
     }

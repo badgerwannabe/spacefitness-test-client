@@ -22,7 +22,6 @@ function TemplateCard({ day: { time, date, id, dayTrainings, createdAt } }) {
               <>
                 <p>{dt.time}</p>
                 <p>{dt.training}</p>
-                <p>{dt.trainer}</p>
               </>
             ))}
         </Card.Description>

@@ -1,18 +1,15 @@
 import _ from "lodash";
 import React, { useState } from "react";
 import {
-  Dropdown,
-  Image,
+
   Transition,
-  Menu,
+
   Grid,
-  Segment,
-  Text,
+
   Button,
-  Card,
+
   Container,
-  GridColumn,
-  CardContent,
+ 
 } from "semantic-ui-react";
 // import scheduledTraining from "./scheduledTraining";
 import { useQuery } from "@apollo/client";
