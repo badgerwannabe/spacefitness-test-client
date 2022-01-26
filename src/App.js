@@ -7,6 +7,7 @@ import BackendPage from "./pages/BackendPage";
 
 import AddTrainerForm from "./components/trainer-components/AddTrainerForm";
 import AddTrainingForm from "./components/training-components/AddTrainingForm";
+import AddTemplateForm from "./components/template-components/addTemplateForm";
 import SingleTrainer from "./components/trainer-components/SingleTrainer";
 import SingleTraining from "./components/training-components/SingleTraining";
 
@@ -53,6 +54,8 @@ function App() {
         />
         <Route exact path="/add-trainer" component={AddTrainerForm} />
         <Route exact path="/add-training" component={AddTrainingForm} />
+        <Route exact path="/add-template" component={AddTemplateForm} />
+
         <Route exact path="/trainers/:trainerId" component={SingleTrainer} />
         <Route exact path="/trainings/:trainingId" component={SingleTraining} />
           

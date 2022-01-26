@@ -7,9 +7,15 @@ import { FETCH_TRAINERS_QUERY, FETCH_TRAININGS_QUERY } from "../utils/graphql";
 
 function DeleteButton({ trainerId, trainingId, callback }) {
   const [confirmOpen, setConfirmOpen] = useState(false);
-  const mutation = trainerId
-    ? DELETE_TRAINER_MUTATION
-    : DELETE_TRAINING_MUTATION;
+let mutation
+  if(trainerId){
+   mutation  = DELETE_TRAINER_MUTATION
+  } else if (trainingId){
+mutation = DELETE_TRAINING_MUTATION;
+  } else{
+mutation = DELETE_TEMPLATE_MUTATION
+  } 
+    
 
   const [deleteElement] = useMutation(mutation, {
     update(proxy) {
@@ -75,6 +81,13 @@ const DELETE_TRAINER_MUTATION = gql`
 const DELETE_TRAINING_MUTATION = gql`
   mutation deleteTraining($trainingId: ID!) {
     deleteTraining(trainingId: $trainingId)
+  }
+`;
+
+const DELETE_TEMPLATE_MUTATION = gql`
+  mutation deleteDay($id: ID!){
+deleteDay(
+ id:$id)
   }
 `;
 

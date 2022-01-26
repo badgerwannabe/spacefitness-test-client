@@ -113,6 +113,28 @@ export const FETCH_TEMPLATES_QUERY = gql`
     }
   }
 `;
+export const ADD_TEMPLATES_MUTATION = gql`
+  mutation createDay(
+    $date: String!
+    $dayTrainings: [getDayTrainings]
+  ){
+createDay(
+  date: $date
+  dayTrainings: $dayTrainings
+)
+  {
+    id
+      date
+      dayTrainings {
+        time
+        training
+      }
+      createdAt
+    }
+  }
+`;
+
+
 export const ADD_TRAINERS_MUTATION = gql`
   mutation createTrainer(
     $name: String!
