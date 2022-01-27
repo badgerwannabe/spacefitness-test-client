@@ -56,11 +56,13 @@ const [createDay, {error}] = useMutation(ADD_TEMPLATES_MUTATION, {
                values={values.date}
                error={error ? true : false}
                />
-
-               
+  </Form.Field>
+                 <Form.Field> 
+                 <Button type="button">Add training </Button>
+                </Form.Field>
 
                <Button type ="submit" color="teal">Submit</Button>
-        </Form.Field>
+      
 
         
     </Form>

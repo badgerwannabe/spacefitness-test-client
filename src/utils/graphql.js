@@ -53,6 +53,7 @@ export const FETCH_TRAINING_QUERY = gql`
     }
   }
 `;
+
 export const ADD_TRAININGS_MUTATION = gql`
   mutation createTraining(
     $trainingName: String!
@@ -75,6 +76,7 @@ export const ADD_TRAININGS_MUTATION = gql`
     }
   }
 `;
+
 export const EDIT_TRAININGS_MUTATION = gql`
   mutation editTraining(
     $trainingName: String

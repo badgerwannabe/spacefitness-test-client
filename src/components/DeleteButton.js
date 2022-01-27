@@ -3,16 +3,17 @@ import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import gql from "graphql-tag";
 import { Button, Confirm, Icon } from "semantic-ui-react";
-import { FETCH_TRAINERS_QUERY, FETCH_TRAININGS_QUERY } from "../utils/graphql";
+import { FETCH_TRAINERS_QUERY, FETCH_TRAININGS_QUERY, FETCH_TEMPLATES_QUERY } from "../utils/graphql";
 
-function DeleteButton({ trainerId, trainingId, callback }) {
+function DeleteButton({ trainerId, trainingId, id, callback }) {
   const [confirmOpen, setConfirmOpen] = useState(false);
+  
 let mutation
   if(trainerId){
    mutation  = DELETE_TRAINER_MUTATION
   } else if (trainingId){
 mutation = DELETE_TRAINING_MUTATION;
-  } else{
+  } else if(id){
 mutation = DELETE_TEMPLATE_MUTATION
   } 
     
@@ -21,7 +22,7 @@ mutation = DELETE_TEMPLATE_MUTATION
     update(proxy) {
       setConfirmOpen(false);
 
-      if (!trainingId) {
+      if (trainerId) {
         const data = proxy.readQuery({
           query: FETCH_TRAINERS_QUERY,
         });
@@ -32,7 +33,7 @@ mutation = DELETE_TEMPLATE_MUTATION
             getTrainers: data.getTrainers.filter((p) => p.id !== trainerId),
           },
         });
-      } else {
+      } else if (trainingId){
         const data = proxy.readQuery({
           query: FETCH_TRAININGS_QUERY,
         });
@@ -43,6 +44,18 @@ mutation = DELETE_TEMPLATE_MUTATION
             getTrainings: data.getTrainings.filter((p) => p.id !== trainingId),
           },
         });
+      } else if(id){
+         const data = proxy.readQuery({
+          query: FETCH_TEMPLATES_QUERY,
+        });
+
+        proxy.writeQuery({
+          query: FETCH_TEMPLATES_QUERY,
+          data: {
+            getDays: data.getDays.filter((p) => p.id !== id),
+          },
+        });
+
       }
 
       if (callback) callback();
@@ -50,6 +63,7 @@ mutation = DELETE_TEMPLATE_MUTATION
     variables: {
       trainerId,
       trainingId,
+      id
     },
   });
 
@@ -86,9 +100,7 @@ const DELETE_TRAINING_MUTATION = gql`
 
 const DELETE_TEMPLATE_MUTATION = gql`
   mutation deleteDay($id: ID!){
-deleteDay(
- id:$id)
-  }
+deleteDay(id:$id)}
 `;
 
 export default DeleteButton;
