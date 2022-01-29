@@ -29,7 +29,7 @@ function ScheduleComponent(props) {
   const ScheduleComponent = (
     <Transition.Group>
       <Container style={{ textAlign: "left" }}>
-        <h1 style={{ textAlign: "center" }}>Grafik Treningów</h1>
+        <h1 style={{ textAlign: "center" }}>Training Schedule</h1>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt
           dolor unde repudiandae culpa ullam, asperiores officiis ratione
@@ -42,13 +42,13 @@ function ScheduleComponent(props) {
             {columns}
           </Grid>
           <Grid style={{ margin: "2rem auto" }} relaxed>
-            <Button>PN, 5.07</Button>
-            <Button>WT, 6.07</Button>
-            <Button>SR, 7.07</Button>
-            <Button>CZ, 8.07</Button>
-            <Button>PT, 9.07</Button>
-            <Button>SB, 10.07</Button>
-            <Button>ND, 11.07</Button>
+            <Button>MO, 5.07</Button>
+            <Button>TU, 6.07</Button>
+            <Button>WE, 7.07</Button>
+            <Button>TH, 8.07</Button>
+            <Button>FR, 9.07</Button>
+            <Button>SA, 10.07</Button>
+            <Button>SU, 11.07</Button>
             <Button primary>Add day</Button>
           </Grid>
         </Container>
