@@ -1,12 +1,12 @@
 
-import React  from "react";
+import React, {useState}  from "react";
 import {useMutation } from "@apollo/client";
 import {useForm} from '../../utils/hooks'
 import { Button, Form  } from "semantic-ui-react";
 
 import {FETCH_TEMPLATES_QUERY, FETCH_TRAININGS_QUERY,ADD_TEMPLATES_MUTATION} from '../../utils/graphql'
 
-
+//hook for form functioning
 function AddTemplateForm (props){
    
     const {values, onChange, onSubmit} = useForm(createDayCallback,{
@@ -18,7 +18,7 @@ function AddTemplateForm (props){
         ]
     });
 
-    
+//apollo hook to send data through GraphQL    
 const [createDay, {error}] = useMutation(ADD_TEMPLATES_MUTATION, {
     errorPolicy: 'all',
     variables:values, 
@@ -40,10 +40,41 @@ const [createDay, {error}] = useMutation(ADD_TEMPLATES_MUTATION, {
         createDay();
     }
     
+  //little component I want to dynamically add each time people press a button  
+  function addDayTraining(){
 
-    const workingArr = [];
+    const addDayTraining = (
+      <>
+
+      <Form.Field>
+            <Form.Input
+               placeholder="time"
+               name="time"
+               onChange={()=>{
+                 console.log("time")
+               }}
+               values={values.time}
+               error={error ? true : false}
+               />
+            <Form.Input
+               placeholder="training"
+               name="training"
+               onChange={()=>{
+                 console.log("training")
+               }}
+               values={values.training}
+               error={error ? true : false}
+               />
+  </Form.Field>
+
+
+
+      </>
+    )
+    return addDayTraining
+  }
     
-
+//Form component itself
     const AddTemplateForm = (
         <>
         <Form onSubmit={onSubmit}>
@@ -58,7 +89,10 @@ const [createDay, {error}] = useMutation(ADD_TEMPLATES_MUTATION, {
                />
   </Form.Field>
                  <Form.Field> 
-                 <Button type="button">Add training </Button>
+                 <Button type="button" onClick={
+                   addDayTraining
+                 }>Add training</Button>
+                 
                 </Form.Field>
 
                <Button type ="submit" color="teal">Submit</Button>
