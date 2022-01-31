@@ -5,6 +5,7 @@ export const useForm = (callback, initialState={})=>{
 
     const onChange = (event, result)=>{
         const { name, value } = result || event.target;
+        console.table(values)
         setValues({ ...values, [name]: value });
     };
     

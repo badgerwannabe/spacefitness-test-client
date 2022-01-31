@@ -13,11 +13,16 @@ function TemplateComponent(props){
         loading,
         data: { getDays: days } = {}
       } = useQuery(FETCH_TEMPLATES_QUERY);
-      console.log(days)
+      // console.log(days)
     
+    let loadingMessage;
+if (loading) {
+loadingMessage = <p>content is loading</p>
+}
+
     const TemplateComponent = (
         <Transition.Group>
-         
+         {loadingMessage}
         {days &&  
             days.map((day) => (
               <Grid.Column key={day.id} style={{ marginBottom: 20 }}>
@@ -28,7 +33,7 @@ function TemplateComponent(props){
 
               <Grid.Column>
       
-        <Button primary massive style={{ paddingLeft:50, paddingRight:50, marginBottom:10  }}   as={Link}
+        <Button primary style={{ paddingLeft:50, paddingRight:50, marginBottom:10  }}   as={Link}
               to={`/add-template`}>
           <h3>Add template</h3>
         </Button>

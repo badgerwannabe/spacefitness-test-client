@@ -1,5 +1,5 @@
 import _ from "lodash";
-import React, { useState } from "react";
+import React from "react";
 import {
 
   Transition,
@@ -13,8 +13,8 @@ import {
 } from "semantic-ui-react";
 // import scheduledTraining from "./scheduledTraining";
 import { useQuery } from "@apollo/client";
-import { FETCH_DAYS_QUERY, FETCH_TRAINERS_QUERY } from "../../utils/graphql";
-import { Link } from "react-router-dom";
+import { FETCH_DAYS_QUERY} from "../../utils/graphql";
+// import { Link } from "react-router-dom";
 import ScheduledTrainingCard from "./scheduledTrainingCard";
 
 function ScheduleComponent(props) {
@@ -26,8 +26,13 @@ function ScheduleComponent(props) {
     </Grid.Column>
   ));
 
+let loadingMessage;
+if (loading) {
+loadingMessage = <p>content is loading</p>
+}
   const ScheduleComponent = (
     <Transition.Group>
+    {loadingMessage}
       <Container style={{ textAlign: "left" }}>
         <h1 style={{ textAlign: "center" }}>Training Schedule</h1>
         <p>

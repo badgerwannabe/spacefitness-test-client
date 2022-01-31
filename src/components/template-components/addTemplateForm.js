@@ -4,18 +4,14 @@ import {useMutation } from "@apollo/client";
 import {useForm} from '../../utils/hooks'
 import { Button, Form  } from "semantic-ui-react";
 
-import {FETCH_TEMPLATES_QUERY, FETCH_TRAININGS_QUERY,ADD_TEMPLATES_MUTATION} from '../../utils/graphql'
+import {FETCH_TEMPLATES_QUERY, ADD_TEMPLATES_MUTATION} from '../../utils/graphql'
 
 //hook for form functioning
 function AddTemplateForm (props){
    
     const {values, onChange, onSubmit} = useForm(createDayCallback,{
-        date:'', dayTrainings:[{
-          time:'testing time', training:"60e9e7580a6b113b2486113a"
-        },{
-          time:'testing2 time2', training:"61ec6a6d0f94870016f419bd"
-        }
-        ]
+        date:'', 
+        // dayTrainings:[]
     });
 
 //apollo hook to send data through GraphQL    
@@ -39,39 +35,68 @@ const [createDay, {error}] = useMutation(ADD_TEMPLATES_MUTATION, {
     function createDayCallback(){
         createDay();
     }
-    
+
+    //addTraningObject State 
+    const [trainingObjects, setTrainingObjects] = useState([]);
+
+
+
+   //addTraningObject function
+    function addTraining(){
+      // console.table(trainingObjects);
+      let newCount = trainingObjects.length + 1;
+      console.log(newCount)
+        const newTrainingObject =  {
+              time:"testDate",
+              trainingInfo:"testingString",
+              id: newCount
+              };
+      
+         setTrainingObjects([...trainingObjects, newTrainingObject]);
+    }
+
+    function updateObjectValues(event, id){
+      const {name,value } = event.target
+      console.log(name + " " + value)
+      console.table(trainingObjects)
+
+      let updatedTraining = trainingObjects.filter(item=>{
+        return(
+        item.id === id
+        )
+      })
+
+    console.log(updatedTraining)
+    }
+
+
   //little component I want to dynamically add each time people press a button  
-  function addDayTraining(){
-
-    const addDayTraining = (
+  const AddDayTraining =({trainingObject,trainingItemIndex}) =>{
+// console.log(trainingObject)
+    return(
       <>
-
       <Form.Field>
             <Form.Input
                placeholder="time"
                name="time"
-               onChange={()=>{
-                 console.log("time")
-               }}
+               onChange={
+                //  (event)=>
+                //  console.log(event.target.value)
+                (event) => updateObjectValues(event, trainingItemIndex)
+               }
                values={values.time}
                error={error ? true : false}
                />
             <Form.Input
                placeholder="training"
                name="training"
-               onChange={()=>{
-                 console.log("training")
-               }}
+                 onChange={ (event) => updateObjectValues(event, trainingItemIndex)}
                values={values.training}
                error={error ? true : false}
                />
-  </Form.Field>
-
-
-
+       </Form.Field>
       </>
     )
-    return addDayTraining
   }
     
 //Form component itself
@@ -89,17 +114,21 @@ const [createDay, {error}] = useMutation(ADD_TEMPLATES_MUTATION, {
                />
   </Form.Field>
                  <Form.Field> 
-                 <Button type="button" onClick={
-                   addDayTraining
-                 }>Add training</Button>
+                 <Button type="button" onClick={addTraining}>Add training</Button>
+                  </Form.Field>
+
+                  <div className='your list of training things'>
+                    {trainingObjects.length === 0 ? "" : trainingObjects.map((trainingObject, index) => (
+                    <AddDayTraining trainingObject={trainingObject} trainingItemIndex={index} key={index}/>
+                
+                ))}
+                </div>
                  
-                </Form.Field>
-
+              
                <Button type ="submit" color="teal">Submit</Button>
-      
-
-        
+  
     </Form>
+
     {error && (
     <div className="ui error message" style={{marginBottom:20}}>
         <li>{error.graphQLErrors[0].message}</li>

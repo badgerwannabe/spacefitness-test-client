@@ -14,10 +14,16 @@ function TrainersComponent(props) {
   const { loading, data: { getTrainers: trainers } = {} } =
     useQuery(FETCH_TRAINERS_QUERY);
 
+//loading logic
+ let loadingMessage;
+if (loading) {
+loadingMessage = <p>content is loading</p>
+}
 
 
   const TrainersComponent = (
     <Transition.Group>
+    {loadingMessage}
       {trainers &&
         trainers.map((trainer) => (
           <Grid.Column
@@ -30,7 +36,7 @@ function TrainersComponent(props) {
         
       <Grid.Column>
       
-        <Button primary massive style={{ paddingLeft:50, paddingRight:50, marginBottom:10  }}   as={Link}
+        <Button primary style={{ paddingLeft:50, paddingRight:50, marginBottom:10  }}   as={Link}
               to={`/add-trainer`}>
           <h3>Add trainer</h3>
         </Button>

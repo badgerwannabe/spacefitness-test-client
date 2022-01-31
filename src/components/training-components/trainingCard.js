@@ -8,7 +8,7 @@ import {
   FETCH_TRAINER_QUERY
 } from "../../utils/graphql";
 
-import { useQuery,useMutation } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import { Link } from "react-router-dom";
 
 function TrainingCard({
@@ -20,6 +20,8 @@ function TrainingCard({
         trainerId,
       },
     });
+    
+  if (loading) return <p>Loading...</p>;
 
   let relatedTrainer;
   if (!getTrainer) {
@@ -46,7 +48,6 @@ function TrainingCard({
       </Card.Content>
       <Card.Content extra>
         <Button
-          onClick={console.log("Edit training")}
           as={Link}
           to={`/trainings/${id}`}
           primary

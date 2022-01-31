@@ -10,6 +10,9 @@ function TrainingComponent(props) {
     FETCH_TRAININGS_QUERY
   );
 
+  if (loading) return <p>Loading...</p>;
+  
+
 
   const TrainingComponent = (
     <Transition.Group>
@@ -23,7 +26,7 @@ function TrainingComponent(props) {
 
 <Grid.Column>
       
-      <Button primary massive style={{ paddingLeft:50, paddingRight:50, marginBottom:10  }}   as={Link}
+      <Button primary style={{ paddingLeft:50, paddingRight:50, marginBottom:10  }}   as={Link}
             to={`/add-training`}>
         <h3>Add training</h3>
       </Button>

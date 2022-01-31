@@ -64,9 +64,14 @@ function AddTrainingForm(props) {
       );
 
 
-
+//loading logic
+ let loadingMessage;
+if (loading) {
+loadingMessage = <p>content is loading</p>
+}
   const AddTrainingForm = (
     <>
+    {loadingMessage}
       <Form onSubmit={onSubmit}>
         <h2>Add a training :</h2>
         <Form.Field>

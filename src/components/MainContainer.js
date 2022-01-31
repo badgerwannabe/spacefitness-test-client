@@ -12,16 +12,15 @@ function MainContainer(props) {
   const pathname = window.location.pathname;
 
   const path = pathname === "/" ? "schedule" : pathname.substr(1);
-  console.log(pathname)
 
   const [activeItem, setActiveItem] = useState(path);
   const handleItemClick = (e, { name }) => setActiveItem(name);
-  console.log(activeItem)
+
   const MainContainer = (
     <Grid>
       <Grid.Row>
         <Grid.Column stretched width={4}>
-          <Menu secondary vertical size="massive">
+          <Menu secondary vertical size="large">
             <Menu.Item
               content="Training schedule"
               name="schedule"

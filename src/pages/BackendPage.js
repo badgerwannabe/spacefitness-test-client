@@ -8,8 +8,8 @@ function BackendPage(){
 
     return(
         <div>
-        <HeaderBackend />
-        <MainContainer />
+        <HeaderBackend key="1"/>
+        <MainContainer key="2"/>
         </div>
     )
 }

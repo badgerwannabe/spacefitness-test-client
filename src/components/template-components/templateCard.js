@@ -1,10 +1,10 @@
 import React from "react";
-import { Card, Image, Button } from "semantic-ui-react";
+import { Card, Button } from "semantic-ui-react";
 import {Link} from "react-router-dom"
 import moment from "moment";
 import DeleteButton from "../DeleteButton";
-import {FETCH_TRAINING_QUERY} from "../../utils/graphql";
-import { useQuery, useMutation, gql } from "@apollo/client";
+// import {FETCH_TRAINING_QUERY} from "../../utils/graphql";
+// import { useQuery, useMutation, gql } from "@apollo/client";
 import DayTraining from "./trainingDayCard.js"
 
 function TemplateCard({ day: { time, date, id, dayTrainings, createdAt } }) {
@@ -37,13 +37,13 @@ function TemplateCard({ day: { time, date, id, dayTrainings, createdAt } }) {
         <Card.Description>
           {dayTrainings &&
             dayTrainings.map((dt) => (
-              <DayTraining dayTraining={dt}/>
+              <DayTraining dayTraining={dt} key={dt.id}/>
             ))}
         </Card.Description>
       </Card.Content>
       <Card.Content extra>
         <Button
-          onClick={console.log("Edit training")}
+        
           as={Link}
           to={`/trainings/${id}`}
           primary

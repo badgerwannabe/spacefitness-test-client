@@ -1,17 +1,13 @@
 import React from "react";
-import { Card, Image, List, Button, Grid } from "semantic-ui-react";
-import moment from "moment";
-import DeleteButton from "../DeleteButton";
+import { Card, Image, Button, Grid } from "semantic-ui-react";
 
 import {
   FETCH_TRAINER_QUERY,
-  FETCH_DAYS_QUERY,
-  FETCH_TRAININGS_QUERY,
   FETCH_TRAINING_QUERY,
 } from "../../utils/graphql";
 
-import { useQuery, useMutation, gql } from "@apollo/client";
-import { Link } from "react-router-dom";
+import { useQuery } from "@apollo/client";
+// import { Link } from "react-router-dom";
 
 function ScheduledTrainingCard({
   day: {
@@ -36,6 +32,11 @@ function ScheduledTrainingCard({
     }
   );
 
+let loadingMessage;
+if (loading || loading1) {
+loadingMessage = <p>content is loading</p>
+}
+
   let relatedTrainer;
   if (!getTrainer) {
     relatedTrainer = <p>No trainer data...</p>;
@@ -53,6 +54,7 @@ function ScheduledTrainingCard({
   console.log(training);
   return (
     <Card.Group>
+    {loadingMessage}
       <Card fluid color="red">
         <Grid>
           <Grid.Column width={5}>

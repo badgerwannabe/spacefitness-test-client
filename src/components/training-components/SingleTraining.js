@@ -1,7 +1,5 @@
 import React from "react";
 import {
-  FETCH_TRAINER_QUERY,
-  FETCH_TRAININGS_QUERY,
   EDIT_TRAININGS_MUTATION,
   FETCH_TRAINING_QUERY,
   FETCH_TRAINERS_QUERY,
@@ -56,7 +54,8 @@ function SingleTraining(props) {
         props.history.push("/trainings");
       },
     });
-  console.log(values);
+
+
 
   const {
     loading1,
@@ -68,8 +67,8 @@ function SingleTraining(props) {
     editTraining({ variables: { trainingId, values } });
   }
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error :(</p>;
+  if (loading ||loading1) return <p>Loading...</p>;
+  if (error||error1) return <p>Error :(</p>;
 
   let trainingMarkup;
   if (!getTraining) {
@@ -99,14 +98,8 @@ function SingleTraining(props) {
         return options;
       });
 
-    // let selected;
-    // async function checkIfSelected(array) {
-    //   let element = await array.find((el) => el.priority === "first");
-    //   selected = element.key;
-    //   console.log(selected);
-    //   console.log(selected);
-    //   return selected;
-    // }
+
+
 
     trainingMarkup = (
       <>
