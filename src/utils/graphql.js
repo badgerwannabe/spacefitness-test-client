@@ -118,7 +118,7 @@ export const FETCH_TEMPLATES_QUERY = gql`
 export const ADD_TEMPLATES_MUTATION = gql`
   mutation createDay(
     $date: String!
-    $dayTrainings: [getDayTrainings]
+    $dayTrainings: [dayTrainings]!
   ){
 createDay(
   date: $date
